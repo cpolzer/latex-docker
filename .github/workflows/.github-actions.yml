@@ -42,7 +42,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=sha
-          bake-target: docker-metadata-action
+          targets: docker-metadata-action
    
       -
         name: Build
@@ -51,6 +51,6 @@ jobs:
           files: |
             ./docker-bake.hcl
             ${{ steps.meta.outputs.bake-file }}
-          bake-target: build
+          targets: build
           source: "${{ github.server_url }}/${{ github.repository }}.git#${{ github.ref }}"
           push: ${{ github.event_name != 'pull_request' }}

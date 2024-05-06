@@ -27,7 +27,7 @@ jobs:
      
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        uses: docker/metadata-action@v4
         with:
           images: cpolzer/latex-docker
 
@@ -37,7 +37,7 @@ jobs:
             context: .
             file: ./latex/Dockerfile
             push: true
-            tags: ${{ steps.meta.outputs.tags }}, cpolzer/latex-docker:latest
+            tags:  cpolzer/latex-docker:latest 
             labels: ${{ steps.meta.outputs.labels }}
 
       - name: Generate artifact attestation

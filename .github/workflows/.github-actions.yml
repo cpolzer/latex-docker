@@ -35,7 +35,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=sha
-          targets: docker-metadata-action
+            bake-target: docker-metadata-action
       -
         name: Login to DockerHub
         if: github.event_name != 'pull_request'

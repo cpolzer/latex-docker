@@ -42,15 +42,12 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=sha
-          targets: docker-metadata-action
    
       -
-        name: Build
-        uses: docker/bake-action@v4
+        name: Build and push
+        uses: docker/build-push-action@v5
         with:
-          files: |
-            ./docker-bake.hcl
-            ${{ steps.meta.outputs.bake-file }}
-          targets: build
-          source: "${{ github.server_url }}/${{ github.repository }}.git#${{ github.ref }}"
-          push: ${{ github.event_name != 'pull_request' }}
+            context: .
+            push: ${{ github.event_name != 'pull_request' }}
+            tags: ${{ steps.meta.outputs.tags }}
+            labels: ${{ steps.meta.outputs.labels }}

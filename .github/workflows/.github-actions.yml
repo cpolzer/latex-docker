@@ -35,9 +35,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
             context: .
-            file: ./Dockerfile
+            file: ./latex/Dockerfile
             push: true
-            tags: ${{ steps.meta.outputs.tags }}
+            tags: ${{ steps.meta.outputs.tags }}, cpolzer/latex-docker:latest
             labels: ${{ steps.meta.outputs.labels }}
 
       - name: Generate artifact attestation

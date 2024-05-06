@@ -1,4 +1,4 @@
-FROM debian:testing
+FROM debian:stable-slim
 
 ARG USER_NAME=latex
 ARG USER_HOME=/home/latex

@@ -14,6 +14,7 @@ ARG PYGMENTS=python3-pygments
 ARG PYTHONIS=python-is-python3
 ARG FIG2DEV=fig2dev
 ARG JRE=default-jre-headless
+ARG ASPELL=aspell
 
 RUN apt-get update && apt-get install -y \
   texlive-full pdftk \
@@ -32,6 +33,8 @@ RUN apt-get update && apt-get install -y \
   "$PYTHONIS" \
   # Java runtime environment (e.g. for arara)
   "$JRE" \
+  # spell checker
+  "$ASPELL" \
   # will be used to add a user
   adduser && \
   # Removing documentation packages *after* installing them is kind of hacky,
